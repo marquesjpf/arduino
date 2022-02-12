@@ -1,3 +1,25 @@
+//the selector button will cycle between modes that will be displayed on the 7segment display:
+//1 - AND
+//2 - OR
+//3 - XOR
+//4 - NAND
+//5 - NOR
+//6 - XNOR
+//
+//the two other buttons will work as inputs for the logic gates funcion.
+//the left and right leds will light with the button pressing, and the middle led will display the funcion result.
+//
+//Needed:
+//Arduino (Micro in my case)
+//3 buttons
+//3 leds
+//1 seven segment display (common cathode)
+//several resistors and wires
+
+
+
+
+
 int selector = 4;
 int lbutton = 5;
 int rbutton = 6;
@@ -47,6 +69,9 @@ void loop() {
   selectorstate = digitalRead(selector);
   lbuttonstate = digitalRead(lbutton);
   rbuttonstate = digitalRead(rbutton);
+
+
+//logic state selector. Note that although the 7 segment will show states 1 to 6, they're really 0 to 5 here (yes, in hindsight i could have simplified it. Maybe i will.
 
   if (logic < 5) {
     if (selectorstate == HIGH) {
@@ -147,6 +172,8 @@ void loop() {
     }
   }
 }
+
+//the following functions will enable the use of the 7 segment display without added libraries. I only did it to 6, as there's no need for more in this code.
 
 void clear7seg(void) {
   digitalWrite(displaya, LOW);
